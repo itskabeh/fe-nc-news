@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+/** @format */
+
+import { useState } from "react";
+import "./App.css";
+// import "./index.css"
+import Header from "./components/Header";
+import ArticleList from "./components/ArticleList";
+import UserContext from "./contexts/UserContext";
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [loggedInUser, setLoggedInUser] = useState({
+		username: "cooljmessy",
+		name: "Peter Messy",
+		avatar_url:
+			"https://vignette.wikia.nocookie.net/mrmen/images/1/1a/MR_MESSY_4A.jpg/revision/latest/scale-to-width-down/250?cb=20170730171002",
+	});
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	return (
+		<UserContext.Provider
+			value={{ loggedInUser: loggedInUser, setLoggedInUser: setLoggedInUser }}
+		>
+			<div className="gradient_background"></div>
+
+			<Header props={loggedInUser} />
+			<ArticleList />
+		</UserContext.Provider>
+	);
 }
 
-export default App
+export default App;
