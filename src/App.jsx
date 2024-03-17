@@ -5,7 +5,10 @@ import "./App.css";
 // import "./index.css"
 import Header from "./components/Header";
 import ArticleList from "./components/ArticleList";
+import ArticlePage from "./pages/ArticlePage";
+import Home from "./pages/Home";
 import UserContext from "./contexts/UserContext";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
 	const [loggedInUser, setLoggedInUser] = useState({
@@ -19,10 +22,12 @@ function App() {
 		<UserContext.Provider
 			value={{ loggedInUser: loggedInUser, setLoggedInUser: setLoggedInUser }}
 		>
-			<div className="gradient_background"></div>
-
 			<Header props={loggedInUser} />
-			<ArticleList />
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/articles" element={<ArticleList />} />
+				<Route path="/articles/:article_id" element={<ArticlePage />} />
+			</Routes>
 		</UserContext.Provider>
 	);
 }

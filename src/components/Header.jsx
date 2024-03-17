@@ -13,13 +13,14 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-// import createAvatar from '../utils/CreateAvatar';
 import UserContext from "../contexts/UserContext";
 import { useContext } from "react";
 // import CommunitySelector from './CommunitySelector';
 import { fetchAllTopics } from "../api/api";
 // import { useState } from "react";
 import { useEffect } from "react";
+
+import { Link } from "react-router-dom"
 
 const pages = ["Latest", "Trending", "All"];
 const communitiesNav = [];
@@ -63,12 +64,14 @@ function Header() {
 		>
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
-					<img
-						src="./assets/nc-news.png"
-						alt="nc news logo"
-						height={120}
-						width={190}
-					/>
+					<Link to="/" style={{ textDecoration: "none" }}>
+						<img
+							src="/assets/nc-news.png"
+							alt="nc news logo"
+							height={120}
+							width={190}
+						/>
+					</Link>
 					<Typography
 						variant="h6"
 						noWrap
@@ -77,10 +80,10 @@ function Header() {
 						sx={{
 							mr: 2,
 							display: { xs: "none", md: "flex" },
-							fontFamily: "monospace",
+							fontFamily: "Lora",
 							fontWeight: 700,
 							letterSpacing: ".3rem",
-							color: "#202142",
+							color: "#000000",
 							textDecoration: "none",
 						}}
 					></Typography>
@@ -116,9 +119,15 @@ function Header() {
 							}}
 						>
 							{pages.map((page) => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Typography textAlign="center">{page}</Typography>
-								</MenuItem>
+								<Link
+									to="/articles"
+									key={page}
+									style={{ textDecoration: "none" }}
+								>
+									<MenuItem onClick={handleCloseNavMenu}>
+										<Typography textAlign="center">{page}</Typography>
+									</MenuItem>
+								</Link>
 							))}
 							<br></br>
 							<hr></hr>
@@ -140,27 +149,34 @@ function Header() {
 							mr: 2,
 							display: { xs: "flex", md: "none" },
 							flexGrow: 1,
-							fontFamily: "monospace",
+							fontFamily: "Lora",
 							fontWeight: 700,
 							letterSpacing: ".3rem",
-							color: "#202142",
+							color: "#000000",
 							textDecoration: "none",
 						}}
 					></Typography>
 					<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 						{pages.map((page) => (
-							<Button
+							<Link
+								to="/articles"
 								key={page}
-								onClick={handleCloseNavMenu}
-								sx={{
-									my: 2,
-									color: "#202142",
-									display: "block",
-									fontSize: "1.2rem",
-								}}
+								style={{ textDecoration: "none" }}
 							>
-								{page}
-							</Button>
+								<Button
+									key={page}
+									onClick={handleCloseNavMenu}
+									sx={{
+										my: 2,
+										color: "#000000",
+										display: "block",
+										fontFamily: "Lora",
+										fontSize: "1.2rem",
+									}}
+								>
+									{page}
+								</Button>
+							</Link>
 						))}
 					</Box>
 
