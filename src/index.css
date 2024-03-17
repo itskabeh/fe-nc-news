@@ -86,12 +86,35 @@ ul {
 	align-content: center;
 }
 
+.btn-primary {
+	background-color: #202142;
+}
+
+.btn-secondary {
+	background: #ff6a95;
+}
+
+.btn:hover {
+	transform: scale(0.98);
+	opacity: 0.9;
+}
+
+.btn:disabled {
+	background-color: #cccccc;
+	color: #333;
+	cursor: auto;
+}
+
+.btn:disabled:hover {
+	transform: scale(1);
+	opacity: 1;
+}
 
 .each-card {
-  background-color: #fff;
-  color: #000000;
-  border-radius: 15px;
-  padding: 50px 50px;
-  margin: 0px 0;
-  position: relative;
+	background-color: #fff;
+	color: #000000;
+	border-radius: 15px;
+	padding: 50px 50px;
+	margin: 20px 0;
+	position: relative;
 }
